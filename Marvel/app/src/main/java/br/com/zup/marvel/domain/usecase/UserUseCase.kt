@@ -15,6 +15,23 @@ class UserUseCase {
         authRepository.login(user.email, user.password)
     }
 
+    fun validateUserData(user: User): Boolean{
+        return when{
+            user.name.isEmpty() -> {
+                false
+            }
+            user.email.isEmpty() -> {
+                false
+            }
+            user.password.isEmpty() -> {
+                false
+            }
+            else -> {
+                true
+            }
+        }
+    }
+
     fun getName(): String{
         return authRepository.getUserName()
     }

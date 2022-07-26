@@ -4,8 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import br.com.zup.marvel.R
-import br.com.zup.marvel.ui.home.view.HomeActivity
-import br.com.zup.marvel.ui.login.LoginActivity
+import br.com.zup.marvel.ui.login.view.LoginActivity
 import java.util.*
 
 class SplashActivity : AppCompatActivity() {

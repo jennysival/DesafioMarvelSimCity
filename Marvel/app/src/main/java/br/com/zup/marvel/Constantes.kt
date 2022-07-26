@@ -9,3 +9,8 @@ const val HOMEM_FERRO_DESCRICAO =
     "\"O Homem de Ferro foi um personagem dos quadrinhos publicados pela Marvel Comics. Sua verdadeira identidade é o empresário e bilionário Tony Stark, que usou armaduras de alta tecnologia no combate ao crime. Foi criado em 1963 pelo escritor Stan Lee, o roteirista Larry Lieber e os desenhistas Jack Kirby e Don Heck\"\n"
 const val MULHER_INIVISVEL_NOME = "Mulher Invisível"
 const val MULHER_INVISVEL_DESCRICAO = "A Mulher Invisível, alter-ego de Susan \"Sue\" Richards, é uma super-heroína de histórias em quadrinhos da editora Marvel Comics. Quando foi criada e durante vários anos chamou-se Garota Invisível. No filme do Quarteto Fantástico de 2005 foi interpretada por Jessica Alba e no de 2015, por Kate Mara."
+
+const val NAME_ERROR = "Nome é obrigatório"
+const val EMAIL_ERROR = "E-mail é obrigatório"
+const val PASSWORD_ERROR = "Senha é obrigatória"
+const val REGISTER_ERROR = "Erro no cadastro"
