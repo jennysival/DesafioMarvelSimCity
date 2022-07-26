@@ -17,10 +17,14 @@ class LoginViewModel: ViewModel() {
     val errorState: LiveData<String> = _errorState
 
     fun login(user: User){
-        if(userUseCase.validateUserData(user)){
-            userUseCase.login(user)
-            _loginState.value = user
-        }else{
+        try {
+            if(userUseCase.validateUserData(user)){
+                userUseCase.login(user)
+                _loginState.value = user
+            }else{
+                _errorState.value = LOGIN_ERROR
+            }
+        }catch (e: Exception){
             _errorState.value = LOGIN_ERROR
         }
     }

@@ -52,7 +52,7 @@ class RegisterActivity : AppCompatActivity() {
             password = binding.etPassword.text.toString()
         )
 
-        return if(user.name.isEmpty() || user.email.isEmpty() || user.password.isEmpty()){ null }
+        return if(user.name.isEmpty() || user.name.length in 1..2 || user.email.isEmpty() || user.password.isEmpty() || user.password.length in 1..7){ null }
         else{ user }
     }
 
