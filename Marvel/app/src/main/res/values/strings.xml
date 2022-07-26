@@ -14,4 +14,6 @@
     <string name="hint_senha">Senha</string>
     <string name="hint_crie_sua_conta_agora">Crie sua conta agora</string>
     <string name="text_btn_login">Login</string>
+    <string name="hint_nome">Nome</string>
+    <string name="text_btn_registrar_conta">Registrar Conta</string>
 </resources>
