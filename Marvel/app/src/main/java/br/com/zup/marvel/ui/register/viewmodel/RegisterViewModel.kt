@@ -20,8 +20,9 @@ class RegisterViewModel: ViewModel() {
         try {
             authRepository.registerUser(user.email,user.password)
                 .addOnSuccessListener {
-                    _registerState.value = user
-                }
+                    authRepository.insertUserName(user.name)?.addOnSuccessListener {
+                        _registerState.value = user
+                    } }
                 .addOnFailureListener{
                     _errorState.value = REGISTER_ERROR
                 }
