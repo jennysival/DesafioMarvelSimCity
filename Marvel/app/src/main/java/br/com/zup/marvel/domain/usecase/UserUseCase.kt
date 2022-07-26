@@ -20,10 +20,16 @@ class UserUseCase {
             user.name.isEmpty() -> {
                 false
             }
+            user.name.length < 3 -> {
+                false
+            }
             user.email.isEmpty() -> {
                 false
             }
             user.password.isEmpty() -> {
+                false
+            }
+            user.password.length < 8 -> {
                 false
             }
             else -> {

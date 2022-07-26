@@ -13,4 +13,5 @@ const val MULHER_INVISVEL_DESCRICAO = "A Mulher Invisível, alter-ego de Susan \
 const val NAME_ERROR = "Nome é obrigatório"
 const val EMAIL_ERROR = "E-mail é obrigatório"
 const val PASSWORD_ERROR = "Senha é obrigatória"
-const val REGISTER_ERROR = "Erro no cadastro"
+const val REGISTER_ERROR = "Não foi possível realizar o registro"
+const val LOGIN_ERROR = "Não foi possível realizar o login"
