@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.zup.marvel.REGISTER_ERROR
 import br.com.zup.marvel.domain.model.User
-import br.com.zup.marvel.domain.usecase.UserUseCase
+import br.com.zup.marvel.domain.repository.AuthRepository
 
 class RegisterViewModel: ViewModel() {
-    private val userUseCase = UserUseCase()
+    private val authRepository = AuthRepository()
 
     private var _registerState = MutableLiveData<User>()
     val registerState: LiveData<User> = _registerState
@@ -17,10 +17,15 @@ class RegisterViewModel: ViewModel() {
     val errorState: LiveData<String> = _errorState
 
     fun register(user: User){
-        if(userUseCase.validateUserData(user)){
-            userUseCase.register(user)
-            _registerState.value = user
-        }else{
+        try {
+            authRepository.registerUser(user.email,user.password)
+                .addOnSuccessListener {
+                    _registerState.value = user
+                }
+                .addOnFailureListener{
+                    _errorState.value = REGISTER_ERROR
+                }
+        }catch (e: Exception){
             _errorState.value = REGISTER_ERROR
         }
     }

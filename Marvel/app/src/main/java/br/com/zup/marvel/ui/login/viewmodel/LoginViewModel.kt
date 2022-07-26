@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.zup.marvel.LOGIN_ERROR
 import br.com.zup.marvel.domain.model.User
-import br.com.zup.marvel.domain.usecase.UserUseCase
+import br.com.zup.marvel.domain.repository.AuthRepository
 
 class LoginViewModel: ViewModel() {
-    private val userUseCase = UserUseCase()
+    private val authRepository = AuthRepository()
 
     private var _loginState = MutableLiveData<User>()
     val loginState: LiveData<User> = _loginState
@@ -18,12 +18,9 @@ class LoginViewModel: ViewModel() {
 
     fun login(user: User){
         try {
-            if(userUseCase.validateUserData(user)){
-                userUseCase.login(user)
-                _loginState.value = user
-            }else{
-                _errorState.value = LOGIN_ERROR
-            }
+            authRepository.login(user.email,user.password)
+                .addOnSuccessListener { _loginState.value = user }
+                .addOnFailureListener { _errorState.value = LOGIN_ERROR}
         }catch (e: Exception){
             _errorState.value = LOGIN_ERROR
         }
