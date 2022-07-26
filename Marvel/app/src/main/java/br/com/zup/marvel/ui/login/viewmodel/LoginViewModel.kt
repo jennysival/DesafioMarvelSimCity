@@ -2,11 +2,12 @@ package br.com.zup.marvel.ui.login.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import br.com.zup.marvel.LOGIN_ERROR
 import br.com.zup.marvel.domain.model.User
 import br.com.zup.marvel.domain.usecase.UserUseCase
 
-class LoginViewModel {
+class LoginViewModel: ViewModel() {
     private val userUseCase = UserUseCase()
 
     private var _loginState = MutableLiveData<User>()
