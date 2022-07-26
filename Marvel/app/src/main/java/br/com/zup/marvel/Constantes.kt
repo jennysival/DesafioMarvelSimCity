@@ -17,3 +17,5 @@ const val REGISTER_ERROR = "Não foi possível realizar o registro"
 const val LOGIN_ERROR = "Não foi possível realizar o login"
 const val NAME_LENGHT_ERROR = "Mínimo de caracteres: 3"
 const val PASSWORD_LENGHT_ERROR = "Mínimo de caracteres: 8"
+
+const val BUNDLE_USER = "user"

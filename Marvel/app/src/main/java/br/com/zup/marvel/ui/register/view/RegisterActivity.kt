@@ -1,11 +1,15 @@
 package br.com.zup.marvel.ui.register.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import br.com.zup.marvel.*
 import br.com.zup.marvel.databinding.ActivityRegisterBinding
 import br.com.zup.marvel.domain.model.User
+import br.com.zup.marvel.ui.home.view.HomeActivity
 import br.com.zup.marvel.ui.register.viewmodel.RegisterViewModel
 
 class RegisterActivity : AppCompatActivity() {
@@ -74,7 +78,20 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    fun initObserver(){
+    private fun navigateToHome(user: User){
+        val intent = Intent(this, HomeActivity::class.java)
+        intent.putExtra(BUNDLE_USER, user)
+        startActivity(intent)
+    }
+
+    private fun initObserver(){
+        viewModel.registerState.observe(this){
+            navigateToHome(it)
+        }
+
+        viewModel.errorState.observe(this){
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
+        }
 
     }
 }
