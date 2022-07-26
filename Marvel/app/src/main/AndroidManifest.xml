@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Marvel">
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.splash.view.SplashActivity"
