@@ -1,7 +1,6 @@
 package br.com.zup.marvel.ui.register.viewmodel
 
 import br.com.zup.marvel.domain.model.User
-import br.com.zup.marvel.domain.repository.AuthRepository
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
