@@ -2,11 +2,12 @@ package br.com.zup.marvel.ui.register.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import br.com.zup.marvel.REGISTER_ERROR
 import br.com.zup.marvel.domain.model.User
 import br.com.zup.marvel.domain.usecase.UserUseCase
 
-class RegisterViewModel {
+class RegisterViewModel: ViewModel() {
     private val userUseCase = UserUseCase()
 
     private var _registerState = MutableLiveData<User>()

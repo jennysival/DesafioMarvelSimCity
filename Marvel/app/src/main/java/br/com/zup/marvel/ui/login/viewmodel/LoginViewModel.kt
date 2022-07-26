@@ -2,7 +2,7 @@ package br.com.zup.marvel.ui.login.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import br.com.zup.marvel.REGISTER_ERROR
+import br.com.zup.marvel.LOGIN_ERROR
 import br.com.zup.marvel.domain.model.User
 import br.com.zup.marvel.domain.usecase.UserUseCase
 
@@ -20,7 +20,7 @@ class LoginViewModel {
             userUseCase.login(user)
             _loginState.value = user
         }else{
-            _errorState.value = REGISTER_ERROR
+            _errorState.value = LOGIN_ERROR
         }
     }
 }
