@@ -16,4 +16,5 @@
     <string name="text_btn_login">Login</string>
     <string name="hint_nome">Nome</string>
     <string name="text_btn_registrar_conta">Registrar Conta</string>
+    <string name="text_menu_sair">Sair</string>
 </resources>

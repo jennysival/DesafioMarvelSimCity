@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.zup.marvel.data.model.Marvel
 import br.com.zup.marvel.data.repository.MarvelRepository
+import br.com.zup.marvel.domain.repository.AuthRepository
 
 class HomeViewModel: ViewModel() {
+    private val authRepository = AuthRepository()
     private val marvelRepository = MarvelRepository()
 
     private var _marvelListState = MutableLiveData<List<Marvel>>()
@@ -16,4 +18,8 @@ class HomeViewModel: ViewModel() {
        val listMarvel =  marvelRepository.getMarvelList()
         _marvelListState.value = listMarvel
     }
+
+    fun getUserName() = authRepository.getUserName()
+
+    fun logout() = authRepository.logout()
 }

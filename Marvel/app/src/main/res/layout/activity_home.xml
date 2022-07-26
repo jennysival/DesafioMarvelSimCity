@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_16"
-        android:text="@string/texto_home"
+        tools:text="@string/texto_home"
         android:textSize="@dimen/font_size_16"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
