@@ -19,6 +19,8 @@ class RegisterActivity : AppCompatActivity() {
         ViewModelProvider(this)[RegisterViewModel::class.java]
     }
 
+    private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -52,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
             password = binding.etPassword.text.toString()
         )
 
-        return if(user.name.isEmpty() || user.name.length in 1..2 || user.email.isEmpty() || user.password.isEmpty() || user.password.length in 1..7){ null }
+        return if(user.name.isEmpty() || user.name.length in 1..2 || user.email.isEmpty() || user.password.isEmpty() || user.password.length in 1..7 || !user.email.trim().matches(emailPattern.toRegex())){ null }
         else{ user }
     }
 
@@ -75,6 +77,10 @@ class RegisterActivity : AppCompatActivity() {
 
         if(binding.etPassword.text.length in 1..7){
             binding.etPassword.error = PASSWORD_LENGHT_ERROR
+        }
+
+        if(!binding.etEmail.text.toString().trim().matches(emailPattern.toRegex())){
+            binding.etEmail.error = INVALID_EMAIL
         }
     }
 

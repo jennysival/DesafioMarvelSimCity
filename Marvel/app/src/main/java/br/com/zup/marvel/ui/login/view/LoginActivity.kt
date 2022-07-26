@@ -12,12 +12,16 @@ import br.com.zup.marvel.ui.home.view.HomeActivity
 import br.com.zup.marvel.ui.login.viewmodel.LoginViewModel
 import br.com.zup.marvel.ui.register.view.RegisterActivity
 
+
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
 
     private val viewModel: LoginViewModel by lazy {
         ViewModelProvider(this)[LoginViewModel::class.java]
     }
+
+    private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -47,23 +51,24 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginButtonClick(){
-        val user = getLoginData()
+            val user = getLoginData()
 
-        if(user != null){
-            viewModel.login(user)
-        }
-        else{
-            showErrorMessage()
-        }
+            if(user != null){
+                viewModel.login(user)
+            }
+            else{
+                showErrorMessage()
+            }
     }
 
     private fun getLoginData(): User?{
+
         val user = User(
             email = binding.etEmailLogin.text.toString(),
             password = binding.etPasswordLogin.text.toString()
         )
 
-        return if(user.email.isEmpty() || user.password.isEmpty()){ null }
+        return if(user.email.isEmpty() || user.password.isEmpty() || !user.email.trim().matches(emailPattern.toRegex())){ null }
         else{ user }
     }
 
@@ -74,6 +79,10 @@ class LoginActivity : AppCompatActivity() {
 
         if(binding.etPasswordLogin.text.isEmpty()){
             binding.etPasswordLogin.error = PASSWORD_ERROR
+        }
+
+        if(!binding.etEmailLogin.text.toString().trim().matches(emailPattern.toRegex())){
+            binding.etEmailLogin.error = INVALID_EMAIL
         }
     }
 
